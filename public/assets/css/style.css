@@ -1,0 +1,457 @@
+/* Reset global para eliminar márgenes y paddings */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Contenedor general */
+.container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 12px;
+    flex-grow: 1; /* evita que se achique */
+}
+
+
+/* Topbar / Header */
+.topbar {
+    background: #342121ff;
+    color: #fff;
+    padding: 10px;
+}
+
+.topbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar h1 {
+    font-size: 45px;
+    color: #eaeaeaff;
+    font-family: "Playfair Display", serif;
+}
+
+/* Estilos para links en nav */
+nav a {
+    color: #fff;
+    margin-left: 8px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Cards */
+.card {
+    background: #fff;
+    padding: 16px;
+    margin: 12px 0;
+    border-radius: 6px;
+    box-shadow: 0 0px 12px rgba(0, 0, 0, 0.159);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Inputs y botones */
+input, select, textarea, button {
+    display: block;
+    padding: 8px;
+    margin: 6px 0;
+    width: 100%;
+}
+
+/* Botones dentro de cards */
+.card button {
+    background: #723f3fff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.card button:hover {
+    background: #472626ff;
+}
+
+/* Mensajes de error */
+.error {
+    color: #b00020;
+    margin-bottom: 10px;
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #eee;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Footer */
+.footer {
+    background: #342121ff;
+    padding: 10px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 18px;
+}
+
+/* Botón volver (login/register) */
+.btn-back {
+    font-size: 12px;
+    color: #eaeaeaff;
+    text-decoration: none;
+}
+
+.btn-back:hover {
+    color: #5e5e5eff;
+    text-decoration: underline;
+}
+
+.admin-buttons {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    gap: 10px;
+    margin: 20px;
+}
+
+.admin-buttons .btn {
+    background: #723f3f;
+    color: #fff;
+    padding: 10px 15px;
+    margin: 0 30px;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.admin-buttons .btn:hover {
+    background: #472626;
+}
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centrar horizontalmente */
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.filter-container .filter-item {
+    display: flex;
+    flex-direction: column; /* etiqueta arriba, input/select debajo */
+}
+
+.filter-container .filter-submit:hover {
+    background: #472626;
+}
+
+.filter-container .filter-submit {
+    margin-top: 10px;
+    align-self: flex-start;
+    padding: 6px 12px;
+    background: #342121;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.filter-container label {
+    margin-right: 4px;
+}
+
+.filter-container select,
+.filter-container input {
+    padding: 5px;
+}
+
+.filter-container button {
+    background: #342121;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-start; /* Botón abajo a la izquierda de los filtros */
+}
+
+.filter-container button:hover {
+    background: #472626;
+}
+
+.orders-summary {
+    margin-top: 30px;
+    margin-bottom: 30px; /* Aumenta espacio superior */
+    padding: 15px;
+    background: #f7f7f7;
+    border-radius: 6px;
+}
+
+/* Tabla pedidos */
+.orders-table_table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-detail {
+    background: #2d6a4f;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.btn-detail:hover {
+    background: #1b4332;
+}
+
+.card-header_detail {
+    display: flex;
+    justify-content: space-between; /* separa al máximo los elementos */
+    align-items: center; /* centra verticalmente */
+    margin-bottom: 15px;
+}
+
+.card-header_detail a {
+    color: #000000;       /* texto negro */
+    text-decoration: none; /* quitar subrayado */
+}
+
+.card-header_detail a:hover {
+    color: #000;          /* opcional: negro más intenso al pasar el mouse */
+    text-decoration: underline; /* opcional: subrayado al hover */
+}
+
+.approved-label {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* espacio entre checkbox y texto */
+    cursor: pointer; /* opcional, para que se note que es clickeable */
+}
+
+.approved-label input[type="checkbox"] {
+    margin: 0; /* quitar margen extra del navegador */
+}
+
+.admin-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.admin-buttons .btn {
+    background: #723f3f;
+    color: #fff;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.admin-buttons .btn:hover {
+    background: #5a2f2f;
+}
+
+.orders-pend, .orders-start {
+    margin-bottom: 30px;
+}
+
+.orders-pend table, .orders-start table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orders-pend th, .orders-pend td, 
+.orders-start th, .orders-start td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.section_h3{
+    margin-bottom: 10px;
+}
+
+.create-product-section {
+    max-width: 500px; /* ancho máximo */
+    margin: 20px auto; /* centra horizontalmente y margen superior/inferior */
+    padding: 15px;
+    border: 1px solid #ddd; /* opcional, para resaltar la sección */
+    border-radius: 8px;
+    background-color: #f9f9f9; /* opcional */
+}
+
+.create-product-section form label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.create-product-section form input,
+.create-product-section form textarea {
+    width: 100%;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.orders-summary h3{
+    margin-bottom: 10px;
+}
+
+.items-table{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.table-actions {
+    display: flex;
+    justify-content: center; /* centra horizontalmente */
+    gap: 10px; /* espacio entre botones */
+}
+
+/* Clase base para todos los botones */
+.btn {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 3px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+/* Botón Editar */
+.edit-btn {
+    background-color: #4caf50; /* verde */
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Botón Cancelar */
+.cancel-btn {
+    background-color: #f44336; /* rojo */
+}
+
+.cancel-btn:hover {
+    background-color: #da190b;
+}
+
+/* Botón Pre-Boleta / Pago */
+.pay-btn {
+    background-color: #618cd1; /* marrón */
+}
+
+.pay-btn:hover {
+    background-color: #5276b0;
+}
+
+.cancel_order {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.cancel_order label {
+    display: block;       /* para que el margen funcione correctamente */
+    margin-bottom: 10px;  /* margen debajo del label */
+    font-weight: bold;
+}
+
+/* Textarea */
+.cancel_order textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical;
+}
+
+.cancel_order .btn.cancel-btn {
+    width: 150px;    /* más estrecho */
+    height: 45px;    /* más alto */
+    display: block;  
+    margin: 0 auto;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.complete-btn {
+    display: inline-block;   /* no ocupa todo el ancho */
+    width: 150px;            /* ancho fijo */
+    height: 45px;            /* alto fijo */
+    margin: 0 auto;          /* centrado */
+    font-size: 20px;
+    color: #fff;
+    background: #723f3f;     /* color del botón */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;      /* asegurar que el texto quede centrado */
+    transition: background 0.3s;
+}
+
+.complete_payment .btn.complete-btn:hover {
+    background: #4b2727; /* cambio suave al pasar el mouse */
+}
+
+
+.orders h3{
+    margin-bottom: 10px;
+}
+
+td .btn_eliminar {
+    display: inline-block;
+    width: 100px;
+    text-align: center; /* asegúrate de que el texto interno esté centrado */
+}
+
+td.center-btn { 
+    text-align: center; /* centrado horizontal del contenido de la celda */
+}
+
+.btn1{
+    display: block;
+    margin: 20px auto;
+}
+
+.form-center {
+    display: flex;
+    justify-content: center;
+}
+
