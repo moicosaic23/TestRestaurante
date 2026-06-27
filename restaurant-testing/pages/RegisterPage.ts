@@ -24,7 +24,7 @@ export class RegisterPage {
   }
 
   async goto() {
-    await this.page.goto('/?route=auth/register');
+    await this.page.goto('?route=auth/register');
     await expect(this.usernameInput).toBeVisible();
   }
 
@@ -43,4 +43,3 @@ export class RegisterPage {
     await expect(this.errorMessage).toContainText(/Usuario ya existe/i);
   }
 }
-

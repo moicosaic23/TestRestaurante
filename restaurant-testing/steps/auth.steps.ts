@@ -50,12 +50,12 @@ When('intenta registrarse con usuario existente {string}', async ({ registerPage
 });
 
 When('cierra sesion', async ({ page, loginPage }) => {
-  await page.goto('/?route=auth/logout');
+  await page.goto('?route=auth/logout');
   await loginPage.expectLoginVisible();
 });
 
 When('navega directamente a la ruta {string}', async ({ page }, route: string) => {
-  await page.goto(`/?route=${route}`);
+  await page.goto(`?route=${route}`);
 });
 
 Then('el sistema muestra la pantalla de espera de aprobacion', async ({ registerPage }) => {
@@ -98,4 +98,3 @@ Then('debe ver opciones exclusivas de administrador', async ({ page }) => {
 });
 
 export { credentials };
-

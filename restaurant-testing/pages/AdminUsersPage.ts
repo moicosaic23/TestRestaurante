@@ -8,7 +8,7 @@ export class AdminUsersPage {
   }
 
   async goto() {
-    await this.page.goto('/?route=admin/users');
+    await this.page.goto('?route=admin/users');
     await expect(this.page.getByRole('heading', { name: /Usuarios/i })).toBeVisible();
   }
 
@@ -47,4 +47,3 @@ export class AdminUsersPage {
     await expect(this.usersTable).toContainText(/Si|No|S./);
   }
 }
-

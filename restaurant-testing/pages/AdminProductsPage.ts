@@ -4,7 +4,7 @@ export class AdminProductsPage {
   constructor(readonly page: Page) {}
 
   async goto() {
-    await this.page.goto('/?route=admin/products');
+    await this.page.goto('?route=admin/products');
     await expect(this.page.getByRole('heading', { name: /Productos/i })).toBeVisible();
   }
 
@@ -39,4 +39,3 @@ export class AdminProductsPage {
     await expect(row.locator('td').nth(3)).toContainText(/No/);
   }
 }
-

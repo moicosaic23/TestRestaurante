@@ -4,7 +4,7 @@ export class CookDashboardPage {
   constructor(readonly page: Page) {}
 
   async goto() {
-    await this.page.goto('/?route=cook/dashboard');
+    await this.page.goto('?route=cook/dashboard');
     await expect(this.page.getByRole('heading', { name: /Panel Cocinero/i })).toBeVisible();
   }
 
@@ -39,4 +39,3 @@ export class CookDashboardPage {
     await expect(this.preparingSection.locator('tbody tr').first()).toBeVisible({ timeout: 10000 });
   }
 }
-

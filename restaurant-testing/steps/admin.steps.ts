@@ -36,7 +36,7 @@ When('abre la gestion de usuarios', async ({ adminUsersPage }) => {
 });
 
 When('abre el panel de administrador', async ({ page }) => {
-  await page.goto('/?route=admin/dashboard');
+  await page.goto('?route=admin/dashboard');
 });
 
 Then('el usuario debe figurar como aprobado en Gestionar Usuarios', async ({ adminUsersPage, state }) => {
@@ -60,4 +60,3 @@ Then('debe ver la tabla de usuarios', async ({ adminUsersPage }) => {
 Then('la tabla de usuarios muestra estados de aprobacion', async ({ adminUsersPage }) => {
   await adminUsersPage.expectApprovalStatesVisible();
 });
-

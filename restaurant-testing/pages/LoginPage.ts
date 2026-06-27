@@ -21,7 +21,7 @@ export class LoginPage {
   }
 
   async goto() {
-    await this.page.goto('/?route=auth/login');
+    await this.page.goto('?route=auth/login');
     await expect(this.usernameInput).toBeVisible();
   }
 
@@ -55,4 +55,3 @@ export class LoginPage {
     expect(passwordValid).toBeFalsy();
   }
 }
-

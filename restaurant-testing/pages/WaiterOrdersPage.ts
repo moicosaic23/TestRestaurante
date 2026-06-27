@@ -10,12 +10,12 @@ export class WaiterOrdersPage {
   constructor(readonly page: Page) {}
 
   async gotoOrders() {
-    await this.page.goto('/?route=waiter/orders');
+    await this.page.goto('?route=waiter/orders');
     await expect(this.page.getByRole('heading', { name: /Pedidos/i })).toBeVisible();
   }
 
   async gotoCreate() {
-    await this.page.goto('/?route=waiter/create');
+    await this.page.goto('?route=waiter/create');
     await expect(this.page.getByRole('heading', { name: /Crear Pedido/i })).toBeVisible();
   }
 
@@ -121,4 +121,3 @@ export class WaiterOrdersPage {
     await expect(this.cancelledOrdersSection.locator('tbody tr').first()).toBeVisible({ timeout: 10000 });
   }
 }
-
