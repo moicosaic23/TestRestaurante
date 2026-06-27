@@ -75,7 +75,7 @@ Then('el navegador mantiene requerido el formulario de login', async ({ loginPag
 });
 
 Then('debe ver el panel de pedidos del camarero', async ({ page }) => {
-  await expect(page.getByRole('heading', { name: /Pedidos/i })).toBeVisible({ timeout: 10000 });
+  await expect(page.getByRole('heading', { name: 'Pedidos', exact: true })).toBeVisible({ timeout: 10000 });
   await expect(page.getByRole('link', { name: /Crear pedido/i })).toBeVisible();
 });
 

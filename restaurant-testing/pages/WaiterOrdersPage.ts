@@ -11,7 +11,7 @@ export class WaiterOrdersPage {
 
   async gotoOrders() {
     await this.page.goto('?route=waiter/orders');
-    await expect(this.page.getByRole('heading', { name: /Pedidos/i })).toBeVisible();
+    await expect(this.page.getByRole('heading', { name: 'Pedidos', exact: true })).toBeVisible();
   }
 
   async gotoCreate() {
