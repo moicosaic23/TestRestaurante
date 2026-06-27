@@ -1,0 +1,11 @@
+restaurant-testing/node_modules/
+restaurant-testing/.features-gen/
+restaurant-testing/playwright-report/
+restaurant-testing/test-results/
+restaurant-testing/Evidencias_Fallos/
+restaurant-testing/Evidencias_Exitos/
+restaurant-testing/playwright/.cache/
+
+.agents/
+.codex/
+.condex/

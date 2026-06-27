@@ -1,0 +1,24 @@
+{
+  "name": "restaurant-functional-testing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Functional BDD tests for the restaurant MVC system.",
+  "scripts": {
+    "bddgen": "bddgen",
+    "test": "npm run bddgen && playwright test --project=chromium --workers=1",
+    "test:headed": "npm run bddgen && playwright test --project=chromium --headed --workers=1",
+    "test:ci": "npm run bddgen && playwright test --project=chromium --workers=1",
+    "test:all-browsers": "npm run bddgen && playwright test --workers=1",
+    "db:seed": "php fixtures/seed-test-data.php",
+    "threshold": "node check-threshold.js",
+    "evidences": "node extraer-evidencias.js",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1",
+    "playwright-bdd": "^9.0.0",
+    "typescript": "^5.9.3"
+  }
+}
+

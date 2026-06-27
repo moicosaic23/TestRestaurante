@@ -1,0 +1,101 @@
+name: Restaurant Functional Tests
+
+on:
+  push:
+    branches: ["main", "feature/*"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+          MYSQL_DATABASE: restaurant_mvc
+        ports:
+          - 3307:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -P 3306 -u root"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: pdo_mysql
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install test dependencies
+        working-directory: ./restaurant-testing
+        run: npm install
+
+      - name: Install Playwright browsers
+        working-directory: ./restaurant-testing
+        run: npx playwright install --with-deps chromium
+
+      - name: Prepare test database
+        run: |
+          mysql -h 127.0.0.1 -P 3307 -u root < restaurant-testing/fixtures/create-test-db.sql
+          php restaurant-testing/fixtures/seed-test-data.php
+
+      - name: Start PHP server with project base path
+        run: |
+          mkdir -p /tmp/www
+          ln -s "$GITHUB_WORKSPACE" /tmp/www/IngSof_Proyecto
+          php -S 127.0.0.1:8080 -t /tmp/www > /tmp/restaurant-server.log 2>&1 &
+          sleep 3
+
+      - name: Run Playwright BDD tests
+        working-directory: ./restaurant-testing
+        env:
+          BASE_URL: http://127.0.0.1:8080/IngSof_Proyecto/public
+        run: npm run test:ci
+
+      - name: Check pass threshold
+        working-directory: ./restaurant-testing
+        if: always()
+        run: node check-threshold.js
+
+      - name: Extract evidences
+        working-directory: ./restaurant-testing
+        if: always()
+        run: node extraer-evidencias.js
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: restaurant-playwright-report
+          path: ./restaurant-testing/playwright-report/
+          retention-days: 30
+
+      - name: Upload failure evidences
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: restaurant-failure-evidences
+          path: ./restaurant-testing/Evidencias_Fallos/
+          retention-days: 30
+
+      - name: Upload success evidences
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: restaurant-success-evidences
+          path: ./restaurant-testing/Evidencias_Exitos/
+          retention-days: 30
+
