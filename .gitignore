@@ -5,7 +5,3 @@ restaurant-testing/test-results/
 restaurant-testing/Evidencias_Fallos/
 restaurant-testing/Evidencias_Exitos/
 restaurant-testing/playwright/.cache/
-
-.agents/
-.codex/
-.condex/
